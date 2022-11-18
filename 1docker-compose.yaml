@@ -1,0 +1,18 @@
+# docker-compose.yaml
+version: "3.8"
+services:
+  jenkins:
+    build:
+      context: .
+    image: onerail/jenkins-agent:dev
+    environment:
+      HISTFILE: /root/.bashcfg/.bash_history
+    privileged: true
+    user: root
+    container_name: jenkins-agent
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      # - /var/run/docker.sock:/var/run/docker.sock
+    
+volumes:
+  jenkins_home:
